@@ -12,6 +12,7 @@ public class MainSceneController : MonoBehaviour
 
     public void OnSnowButtonPressed()
     {
-        SceneManager.LoadScene("Snow");
+        SceneManager.LoadScene("Loading");
+        LoadingManager.nextScene = "Snow";
     }
 }
