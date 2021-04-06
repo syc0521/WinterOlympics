@@ -1,0 +1,151 @@
+{
+    "name": "InputMaster",
+    "maps": [
+        {
+            "name": "PlayController",
+            "id": "97b76e75-998f-4334-87d3-1c40cd527947",
+            "actions": [
+                {
+                    "name": "P1_L",
+                    "type": "Button",
+                    "id": "1a60e731-7ed2-401b-b040-49cd2058f694",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "Tap"
+                },
+                {
+                    "name": "P2_L",
+                    "type": "Button",
+                    "id": "8553c845-eb94-4056-80d2-3d9097bf0adf",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "Tap"
+                },
+                {
+                    "name": "P1_R",
+                    "type": "Button",
+                    "id": "9d8e7d53-969d-405a-baf1-a9867036bc40",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "Tap"
+                },
+                {
+                    "name": "P2_R",
+                    "type": "Button",
+                    "id": "9dac389c-34ed-40b7-aae6-6ba6885187f1",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "Tap"
+                },
+                {
+                    "name": "P1_Jump",
+                    "type": "Button",
+                    "id": "f876fdc6-1584-48fe-a46d-7219f68f6949",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "Tap"
+                },
+                {
+                    "name": "P2_Jump",
+                    "type": "Button",
+                    "id": "b59115df-2e60-4aa8-bc24-fc1bb686d21f",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "Tap"
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "4c16562b-6180-4c69-a339-e45058ec0ca7",
+                    "path": "<Keyboard>/a",
+                    "interactions": "Tap",
+                    "processors": "",
+                    "groups": "PC",
+                    "action": "P1_L",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "5c3c4794-f211-4798-8080-bac9b13f1a7e",
+                    "path": "<Keyboard>/d",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "PC",
+                    "action": "P1_R",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "e7aa451d-a44e-49c0-9c34-a49a614cc532",
+                    "path": "<Keyboard>/l",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "PC",
+                    "action": "P2_R",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "d91297d2-daa3-4732-8505-331e95044d89",
+                    "path": "<Keyboard>/j",
+                    "interactions": "Tap",
+                    "processors": "",
+                    "groups": "PC",
+                    "action": "P2_L",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "236a96a9-210f-42b1-8218-8ea21c46af4f",
+                    "path": "<Keyboard>/w",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "P1_Jump",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "6d6b34e3-42c0-4c9d-8637-a342bcbd2153",
+                    "path": "<Keyboard>/i",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "P2_Jump",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        }
+    ],
+    "controlSchemes": [
+        {
+            "name": "Xbox",
+            "bindingGroup": "Xbox",
+            "devices": [
+                {
+                    "devicePath": "<XInputController>",
+                    "isOptional": true,
+                    "isOR": false
+                }
+            ]
+        },
+        {
+            "name": "PC",
+            "bindingGroup": "PC",
+            "devices": [
+                {
+                    "devicePath": "<Keyboard>",
+                    "isOptional": false,
+                    "isOR": false
+                }
+            ]
+        }
+    ]
+}
