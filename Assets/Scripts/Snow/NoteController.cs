@@ -24,8 +24,8 @@ namespace Snow
         public static int[] perfect = { 0, 0 }, good = { 0, 0 }, miss = { 0, 0 };
         public static float hitVolume;
         public static int totalCount, noteCount, rewardCount;
-        public static bool isAutoPlay;
-        public static int speed = 15;
+        public static bool isAutoPlay = false;
+        public static int speed = 13;
         public static bool isPaused = false;
         public GameObject pauseCanvas;
         [HideInInspector]
@@ -108,6 +108,7 @@ namespace Snow
             yield return new WaitForSeconds(NoteSpeed);
             source.Play();
             yield return new WaitForSeconds(clip.length);
+            SceneManager.LoadScene("Result");
             if (isAutoPlay)
             {
                 //LoadingManager.nextScene = "Select";
@@ -260,7 +261,7 @@ namespace Snow
 
         public float GetScore(int perfect, int good, int bell)
         {
-            return (perfect + good * 0.6f) / noteCount * 0.9f + bell / (float)rewardCount * 0.1f;
+            return (perfect + good * 0.6f) / noteCount * 90.0f + bell / (float)rewardCount * 10.0f;
         }
     }
 }

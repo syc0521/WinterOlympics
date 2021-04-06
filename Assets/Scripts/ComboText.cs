@@ -15,8 +15,8 @@ public class ComboText : MonoBehaviour
         {
             texts[i].text = NoteController.combo[i].ToString();
         }
-        P1.transform.position = Vector3.Lerp(startPos.position, endPos.position, NoteController.score[0]);
-        P2.transform.position = Vector3.Lerp(startPos.position, endPos.position, NoteController.score[1]);
+        P1.transform.position = Vector3.Lerp(startPos.position, endPos.position, NoteController.score[0] / 100.0f);
+        P2.transform.position = Vector3.Lerp(startPos.position, endPos.position, NoteController.score[1] / 100.0f);
 
     }
 }
