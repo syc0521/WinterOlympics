@@ -48,3 +48,19 @@ MonoBehaviour:
   ball2Prefab: {fileID: 8317849298676874523, guid: cd46e312c240d154c9bbef104d8685dc,
     type: 3}
   selectThrow: 0
+  skills:
+  - {fileID: 21300000, guid: a44bfb96942cc214a93c6dedc19d6049, type: 3}
+  - {fileID: 21300000, guid: 406f075cda2d9a64eba8d02b566ec120, type: 3}
+  - {fileID: 21300000, guid: 2de0bd66b03e5e7458c03199793793e9, type: 3}
+  - {fileID: 21300000, guid: d25738ea18e2f7b4bac43cd301f3fc7f, type: 3}
+  - {fileID: 21300000, guid: b174c600de035094ea5aae4c510bbeb6, type: 3}
+  - {fileID: 21300000, guid: 4e71ad47fa8a0114caf8c687753fade2, type: 3}
+  buildingPrefab:
+  - {fileID: 7875802090252084561, guid: d4924bf67ad97e349ba2e36556acfa4b, type: 3}
+  - {fileID: 6047254137910508889, guid: 8f213bf5e3e5c5e4f88af7916bb52cea, type: 3}
+  - {fileID: 8614698857110985239, guid: 4468dd436a1dba74d915848f2acfe4df, type: 3}
+  - {fileID: 8499827593819642386, guid: 80aaf3e24db74c24ea8aaf63165070d7, type: 3}
+  - {fileID: 384554781950146526, guid: 3dde836d528ad0c43bda66aa6b60b77f, type: 3}
+  - {fileID: 430262800340990968, guid: 41624649294217d4cbc7f297d93f090d, type: 3}
+  - {fileID: 1444028107518501768, guid: 9f90a68f63731fd42b9506ecb73698bb, type: 3}
+  - {fileID: 5154627866655175677, guid: 50a96e4b2ef70734d8386ea8ad379e40, type: 3}

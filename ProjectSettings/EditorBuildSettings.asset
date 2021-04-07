@@ -9,6 +9,9 @@ EditorBuildSettings:
     path: Assets/Scenes/Main.unity
     guid: 76bd385bc4fa7a64196364c793d60c92
   - enabled: 1
+    path: Assets/Scenes/IceBall.unity
+    guid: 8004411db0121b7428b0863064512cb0
+  - enabled: 1
     path: Assets/Scenes/Snow.unity
     guid: 9fc0d4010bbf28b4594072e72b8655ab
   - enabled: 1

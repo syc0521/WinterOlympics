@@ -5,14 +5,22 @@ using UnityEngine.SceneManagement;
 
 public class MainSceneController : MonoBehaviour
 {
+    public GameObject bgm;
+    private void Start()
+    {
+        //bgm.GetComponent<AudioSource>().volume = 1f;
+    }
     public void OnIceButtonPressed()
     {
-
+        LoadingManager.nextScene = "IceBall";
+        SceneManager.LoadScene("Loading");
     }
 
     public void OnSnowButtonPressed()
     {
-        SceneManager.LoadScene("Loading");
+        //bgm.GetComponent<BGM>().canDestroy = true;
+        //StartCoroutine(bgm.GetComponent<BGM>().DestroyAudio());
         LoadingManager.nextScene = "Snow";
+        SceneManager.LoadScene("Loading");
     }
 }
