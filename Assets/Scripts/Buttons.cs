@@ -10,12 +10,14 @@ public class Buttons : MonoBehaviour
     public GameObject pauseCanvas;
     public void OnNextButtonPressed()
     {
+        Snow.NoteController.isPaused = false;
         Time.timeScale = 1;
         SceneManager.LoadScene("Loading");
         LoadingManager.nextScene = "Main";
     }
     public void OnContinueButtonPressed()
     {
+        Snow.NoteController.isPaused = false;
         BGM.Play();
         Time.timeScale = 1;
         Snow.NoteController.isPaused = false;
@@ -23,14 +25,24 @@ public class Buttons : MonoBehaviour
     }
     public void OnSnowRetryButtonPressed()
     {
+        Snow.NoteController.isPaused = false;
         Time.timeScale = 1;
         SceneManager.LoadScene("Loading");
         LoadingManager.nextScene = "Snow";
     }
-    public void OnIceRetryButtonPressed()
+    public void OnIceNextButtonPressed()
     {
+        IcePauseController.isPaused = false;
         Time.timeScale = 1;
+        BGM.volume = 1;
         SceneManager.LoadScene("Loading");
-        LoadingManager.nextScene = "IceBall";
+        LoadingManager.nextScene = "Main";
+    }
+    public void OnIceContinueButtonPressed()
+    {
+        IcePauseController.isPaused = false;
+        BGM.volume = 1;
+        Time.timeScale = 1;
+        pauseCanvas.SetActive(false);
     }
 }
