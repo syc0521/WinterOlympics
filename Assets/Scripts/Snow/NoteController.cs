@@ -43,6 +43,7 @@ namespace Snow
 
         void Start()
         {
+            Initialize();
             P2_L_Start = ReversePos(start_R.position);
             P2_M_Start = ReversePos(start_M.position);
             P2_R_Start = ReversePos(start_L.position);
@@ -60,7 +61,18 @@ namespace Snow
                 }
             }
         }
-
+        private void Initialize()
+        {
+            for (int i = 0; i < 2; i++)
+            {
+                bell[i] = 0;
+                perfect[i] = 0;
+                good[i] = 0;
+                miss[i] = 0;
+                score[i] = 0;
+                combo[i] = 0;
+            }
+        }
         void Update()
         {
             PauseGame();

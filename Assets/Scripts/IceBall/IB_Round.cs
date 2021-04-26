@@ -27,7 +27,7 @@ public class IB_Round : MonoBehaviour
         
     //存储游戏运行时间的变量，控制每回合进程
     int time;
-
+    public ForceController forceController;
     private CinemachineVirtualCamera lookDown;
     GameObject turnText;
         
@@ -39,7 +39,7 @@ public class IB_Round : MonoBehaviour
     //控制的冰壶，起始位置（0，0.5，-50），旋转（0，0，0)
     //冰壶的额外属性：基础施力900，物体朝向或速度方向保持一致
     GameObject ball;
-    float force = 900;
+    public static float force = 900;
     Vector3 direction;
 
     //12两队存放冰壶的父物体，12两队的冰壶的预制体
@@ -69,7 +69,7 @@ public class IB_Round : MonoBehaviour
     GameObject buildStart;
     public Sprite[] skills;
     GameObject t1skx, t1sky, t2skx, t2sky;
-    bool tsk = false;
+
     GameObject skx, sky;    
     GameObject throwStart;
     GameObject turnPlayer;
@@ -132,6 +132,7 @@ public class IB_Round : MonoBehaviour
 
     void Start()
     {
+        forceController = GameObject.Find("GameController").GetComponent<ForceController>();
         lookDown = GameObject.Find("LookDown").GetComponent<CinemachineVirtualCamera>();
 
         turnText = GameObject.Find("TurnText");
@@ -238,7 +239,6 @@ public class IB_Round : MonoBehaviour
             Debug.Log("Player" + player + " to run!");
             canThrow = true;
 
-            tsk = true;
 
             playerSkillX = team1SkillX;
             playerSkillY = team1SkillY;
@@ -257,8 +257,6 @@ public class IB_Round : MonoBehaviour
             player = selectThrow % 3 + ((selectThrow / 3) % 2) * additionalPlayer;
             Debug.Log("Player" + player + " to run!");
             canThrow = true;
-
-            tsk = true;
 
             playerSkillX = team2SkillX;
             playerSkillY = team2SkillY;
@@ -310,15 +308,19 @@ public class IB_Round : MonoBehaviour
         switch (throwStage)
         {
             case 0:
+                forceController.HideForce();
                 ChangeHorizontal();
                 break;
             case 1:
+                forceController.HideForce();
                 ChangeDirection();
                 break;
             case 2:
+                forceController.ShowForce();
                 ChangeForce();
                 break;
             case 3:
+                forceController.HideForce();
                 direction = ball.transform.forward;
                 ball.GetComponent<Rigidbody>().
                     AddForce(direction * force);
@@ -359,7 +361,7 @@ public class IB_Round : MonoBehaviour
     private void ChangeForce()
     {
         vertical = (int)Input.GetAxisRaw("P" + player + "Vertical");
-        if (vertical != 0)
+        if (vertical != 0 && force <= 1350)
         {
             force += vertical * 80 * Time.deltaTime;
             Debug.Log("当前力度：" + (int)force);
@@ -398,7 +400,7 @@ public class IB_Round : MonoBehaviour
                 direction;
         }
 
-        if (Input.GetButtonDown("P" + player + "X") && tsk)
+        if (Input.GetButtonDown("P" + player + "X") )
         {
             switch (playerSkillX)
             {
@@ -423,10 +425,9 @@ public class IB_Round : MonoBehaviour
                     ball.GetComponent<Rigidbody>().mass = 0.2f;
                     break;
             }
-            tsk = false;
         }
 
-        if (Input.GetButtonDown("P" + player + "Y") && tsk)
+        if (Input.GetButtonDown("P" + player + "Y") )
         {
             switch (playerSkillY)
             {
@@ -451,7 +452,6 @@ public class IB_Round : MonoBehaviour
                     ball.GetComponent<Rigidbody>().mass = 0.2f;
                     break;
             }
-            tsk = false;
         }
     }
 
