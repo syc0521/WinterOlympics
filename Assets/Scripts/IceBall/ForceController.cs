@@ -16,7 +16,7 @@ public class ForceController : MonoBehaviour
     void Update()
     {
         float force = IB_Round.force;
-        forceImage.fillAmount = Mathf.Lerp(0, 1, Mathf.InverseLerp(900, 1350, force));
+        forceImage.fillAmount = Mathf.Lerp(0, 1, Mathf.InverseLerp(IB_Round.minForce, IB_Round.maxForce, force));
     }
 
     public void ShowForce()

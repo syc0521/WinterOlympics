@@ -5,14 +5,9 @@ using UnityEngine;
 public class IcePauseController : MonoBehaviour
 {
     public static bool isPaused;
-    public AudioSource source;
-    public GameObject lightPrefab;
     public GameObject pauseCanvas;
     public GameObject tutorialCanvas;
-    private void Start()
-    {
-        //Instantiate(lightPrefab);
-    }
+    public BGMController bgm;
     void Update()
     {
         PauseGame();
@@ -27,11 +22,12 @@ public class IcePauseController : MonoBehaviour
         {
             if (Input.GetKeyDown(KeyCode.Escape) || Input.GetKeyDown(KeyCode.Backspace))
             {
+                bgm.IsActive = false;
                 isPaused = true;
-                source.volume = 0.2f;
                 pauseCanvas.SetActive(true);
                 Time.timeScale = 0;
             }
         }
     }
+
 }

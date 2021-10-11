@@ -43,10 +43,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d8f6fd8a0fef32c49b8f58896ac56208, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ball1Prefab: {fileID: 94794025353812758, guid: 322356371525acd4f944e181d852bdad,
-    type: 3}
-  ball2Prefab: {fileID: 8317849298676874523, guid: cd46e312c240d154c9bbef104d8685dc,
-    type: 3}
+  forceController: {fileID: 0}
+  ball1Prefab: {fileID: 2193406393064209328, guid: 15accbf83fc754f43ac76cb59f7bf18b, type: 3}
+  ball2Prefab: {fileID: 2193406393064209328, guid: 62cd611297299cd45b2fe1771a3e8ce6, type: 3}
   selectThrow: 0
   skills:
   - {fileID: 21300000, guid: a44bfb96942cc214a93c6dedc19d6049, type: 3}

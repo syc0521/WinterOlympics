@@ -30,16 +30,19 @@ public class IB_Round : MonoBehaviour
     public ForceController forceController;
     private CinemachineVirtualCamera lookDown;
     GameObject turnText;
-        
+    public static readonly int minForce = 850;
+    public static readonly int maxForce = 1200;
+
+
     //本回合能操作的玩家，玩家的轴输入，额外玩家数量控制总人数
     int player = 1;
     int horizontal, vertical = 0;
     int additionalPlayer = 0;
 
     //控制的冰壶，起始位置（0，0.5，-50），旋转（0，0，0)
-    //冰壶的额外属性：基础施力900，物体朝向或速度方向保持一致
+    //冰壶的额外属性：基础施力850，物体朝向或速度方向保持一致
     GameObject ball;
-    public static float force = 900;
+    public static float force = 850;
     Vector3 direction;
 
     //12两队存放冰壶的父物体，12两队的冰壶的预制体
@@ -119,6 +122,7 @@ public class IB_Round : MonoBehaviour
     Vector3 buildingPos1;
     Vector3 buildingPos2;
     bool[,] canBuild = new bool[MaxLengthX, MaxLengthZ];
+    private AudioSource slideAudio;
 
     /* 
         * 初始化：
@@ -225,6 +229,10 @@ public class IB_Round : MonoBehaviour
         else if (!isStop)
         {
             ControlBall();
+            if (ball != null)
+            {
+                slideAudio.volume = ball.GetComponent<Rigidbody>().velocity.magnitude * 0.5f;
+            }
         }
     }
 
@@ -234,7 +242,8 @@ public class IB_Round : MonoBehaviour
         if (selectThrow % 3 == 1)
         {
             ball = Instantiate(ball1Prefab, ball1Prefab.transform.position,
-                ball1Prefab.transform.rotation, team1.transform);
+                ball1Prefab.transform.rotation, team1.transform).transform.GetChild(0).gameObject;
+            slideAudio = ball.transform.GetChild(1).GetComponent<AudioSource>();
             player = selectThrow % 3 + ((selectThrow / 3) % 2) * additionalPlayer;
             Debug.Log("Player" + player + " to run!");
             canThrow = true;
@@ -253,7 +262,7 @@ public class IB_Round : MonoBehaviour
         else if (selectThrow % 3 == 2)
         {
             ball = Instantiate(ball2Prefab, ball2Prefab.transform.position,
-                ball2Prefab.transform.rotation, team2.transform);
+                ball2Prefab.transform.rotation, team2.transform).transform.GetChild(0).gameObject;
             player = selectThrow % 3 + ((selectThrow / 3) % 2) * additionalPlayer;
             Debug.Log("Player" + player + " to run!");
             canThrow = true;
@@ -293,7 +302,7 @@ public class IB_Round : MonoBehaviour
                     ball.transform.localEulerAngles = new Vector3(0, 0, 0);
                     break;
                 case 1:
-                    force = 900;
+                    force = minForce;
                     break;
             }
         }
@@ -322,9 +331,12 @@ public class IB_Round : MonoBehaviour
             case 3:
                 forceController.HideForce();
                 direction = ball.transform.forward;
-                ball.GetComponent<Rigidbody>().
-                    AddForce(direction * force);
-                force = 900;
+                ball.GetComponent<AudioSource>().Play();
+                slideAudio.Play();
+                var trail = ball.transform.GetChild(0).gameObject.GetComponent<TrailRenderer>();
+                trail.emitting = true;
+                ball.GetComponent<Rigidbody>().AddForce(direction * force);
+                force = minForce;
                 throwStage = 0;
                 canThrow = false;
                 isStop = false;
@@ -361,10 +373,10 @@ public class IB_Round : MonoBehaviour
     private void ChangeForce()
     {
         vertical = (int)Input.GetAxisRaw("P" + player + "Vertical");
-        if (vertical != 0 && force <= 1350)
+        if (vertical != 0 && force <= maxForce)
         {
             force += vertical * 80 * Time.deltaTime;
-            Debug.Log("当前力度：" + (int)force);
+            //Debug.Log("当前力度：" + (int)force);
         }
     }
 
@@ -759,5 +771,10 @@ public class IB_Round : MonoBehaviour
         t1sky.GetComponent<Image>().sprite = skills[team1SkillY];
         t2skx.GetComponent<Image>().sprite = skills[team2SkillX];
         t2sky.GetComponent<Image>().sprite = skills[team2SkillY];
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        ball.GetComponent<AudioSource>().Play();
     }
 }

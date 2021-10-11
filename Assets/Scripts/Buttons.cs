@@ -7,6 +7,7 @@ using UnityEngine.SceneManagement;
 public class Buttons : MonoBehaviour
 {
     public AudioSource BGM;
+    public BGMController source;
     public GameObject pauseCanvas;
     public void OnNextButtonPressed()
     {
@@ -40,9 +41,9 @@ public class Buttons : MonoBehaviour
     }
     public void OnIceContinueButtonPressed()
     {
-        IcePauseController.isPaused = false;
-        BGM.volume = 1;
         Time.timeScale = 1;
+        IcePauseController.isPaused = false;
         pauseCanvas.SetActive(false);
+        source.IsActive = true;
     }
 }
